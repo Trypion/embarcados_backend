@@ -1,5 +1,5 @@
 module.exports = {
   clients: {
-    url: "http://localhost:3000",
+    url: process.env.CLIENTS_URL || "http://localhost:3000",
   },
 };

@@ -16,7 +16,7 @@ app.use(service({ router }));
 app.use(logger("dev"));
 
 //Servidor
-let porta = 3000;
+let porta = 5000;
 app.listen(porta, () => {
   console.log("Servidor em execução na porta: " + porta);
 });

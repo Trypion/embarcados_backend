@@ -13,7 +13,7 @@ const factory = ({ router }) => {
   });
 
   router.get("/vehicle_lock/:id", async (req, res) => {
-    const vehicle_lock = await Model.find({ _id: req.params.id });
+    const vehicle_lock = await Model.findById(req.params.id);
 
     res.send(vehicle_lock);
   });
@@ -23,7 +23,7 @@ const factory = ({ router }) => {
 
     const vehicle_lock = new Model({ veiculo, cliente, status: "unlocked" });
 
-    const { data: id } = await billingApi.http.post("/billing", {
+    const { data: _id } = await billingApi.http.post("/billing", {
       veiculo,
       cliente,
       tempo,
@@ -31,14 +31,14 @@ const factory = ({ router }) => {
 
     await vehicle_lock.save();
 
-    res.send({ billing: id, vehicle_lock: vehicle_lock });
+    res.send({ billing: _id, vehicle_lock: vehicle_lock });
   });
 
   router.post("/vehicle_lock/lock", async (req, res) => {
     const { billing, vehicle_lock_id } = req.body;
 
     const {
-      data: { id },
+      data: { _id },
     } = await billingApi.http.get(`/billing/charge/${billing}`);
 
     const vehicle_lock = await Model.findByIdAndUpdate(
@@ -48,7 +48,7 @@ const factory = ({ router }) => {
 
     await vehicle_lock.save();
 
-    res.send({ billing: id, vehicle_lock });
+    res.send({ billing: _id, vehicle_lock });
   });
 
   router.put("/vehicle_lock/:id", async (req, res) => {

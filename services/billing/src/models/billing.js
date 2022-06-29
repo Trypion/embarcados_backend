@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const BillingSchema = new Schema({
   valor: {
     type: String,
-    required: [true, "Nome Obrigatório"],
+    required: [true, "Valor Obrigatório"],
   },
   status: {
     type: String,

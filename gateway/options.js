@@ -10,5 +10,8 @@ module.exports = {
   },
   vehicle_location: {
     url: process.env.VEHICLE_LOCATION_URL || "http://localhost:3003",
-  }
+  },
+  vehicle_lock: {
+    url: process.env.VEHICLE_LOCK_URL || "http://localhost:3004",
+  },
 };

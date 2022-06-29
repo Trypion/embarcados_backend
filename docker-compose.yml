@@ -18,6 +18,9 @@ services:
     environment:
       CLIENTS_URL: "http://clients:5000"
       VEHICLES_URL: "http://vehicles:5000"
+      BILLING_URL: "http://billing:5000"
+      VEHICLE_LOCATION_URL: "http://vehicle-location:5000"
+      VEHICLE_LOCK_URL: "http://vehicle-lock:5000"
       VIRTUAL_HOST: "api.127.0.0.1.nip.io"
 
   clients:
@@ -27,11 +30,40 @@ services:
       VIRTUAL_HOST: "clients.127.0.0.1.nip.io"
     depends_on:
       - mongodb
+
   vehicles:
     build: ./services/vehicles
     environment:
       MONGODB_URL: "mongodb://mongodb:27017"
       VIRTUAL_HOST: "vehicles.127.0.0.1.nip.io"
+    depends_on:
+      - mongodb
+
+  billing:
+    build: ./services/billing
+    environment:
+      MONGODB_URL: "mongodb://mongodb:27017"
+      VIRTUAL_HOST: "billing.127.0.0.1.nip.io"
+      VEHICLES_URL: "http://vehicles:5000"
+      CLIENTS_URL: "http://clients:5000"
+    depends_on:
+      - mongodb
+
+  vehicle-location:
+    build: ./services/vehicles_location
+    environment:
+      MONGODB_URL: "mongodb://mongodb:27017"
+      VIRTUAL_HOST: "vehicles_location.127.0.0.1.nip.io"
+      VEHICLES_URL: "http://vehicles:5000"
+    depends_on:
+      - mongodb
+
+  vehicle-lock:
+    build: ./services/vehicles_lock
+    environment:
+      MONGODB_URL: "mongodb://mongodb:27017"
+      VIRTUAL_HOST: "vehicles_lock.127.0.0.1.nip.io"
+      BILLING_URL: "http://billing:5000"
     depends_on:
       - mongodb
 

@@ -13,7 +13,7 @@ const factory = ({ router }) => {
   });
 
   router.get("/billing/:id", async (req, res) => {
-    const billing = await Model.find({ _id: req.params.id });
+    const billing = await Model.findById(req.params.id);
 
     res.send(billing);
   });
@@ -23,7 +23,7 @@ const factory = ({ router }) => {
 
     const {
       data: { cartao },
-    } = await clientApi.http.get(`/client/${cliente}`);
+    } = await clientApi.http.get(`/clients/${cliente}`);
 
     const {
       data: { valor },
@@ -34,7 +34,7 @@ const factory = ({ router }) => {
     const billing = new Model({
       ...req.body,
       cartao,
-      preco,
+      valor: preco,
       status: "pending",
     });
 

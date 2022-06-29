@@ -11,7 +11,7 @@ const factory = ({router}) => {
     });
 
     router.get("/vehicles/:id", async (req, res) => {
-        const vehicles = await Model.find({ _id: req.params.id });
+        const vehicles = await Model.findById(req.params.id);
 
         res.send(vehicles);
     });

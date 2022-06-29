@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 const options = require("../../options");
 
-const BASE_URL = options.clients.vehicle_location.url;
+const BASE_URL = options.clients.clients.url;
 
 const http = axios.create({
   baseURL: BASE_URL,

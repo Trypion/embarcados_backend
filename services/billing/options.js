@@ -9,5 +9,8 @@ module.exports = {
     vehicle: {
       url: process.env.VEHICLES_URL || "http://localhost:3000",
     },
+    clients: {
+      url: process.env.CLIENTS_URL || "http://localhost:3001",
+    }
   },
 };

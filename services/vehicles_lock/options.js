@@ -6,9 +6,6 @@ module.exports = {
     },
   },
   clients: {
-    vehicle_location: {
-      url: process.env.VEHICLES_URL || "http://localhost:3000",
-    },
     billing: {
       url: process.env.BILLING_URL || "http://localhost:3001",
     },

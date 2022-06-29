@@ -1,6 +1,7 @@
 const { default: mongoose } = require("mongoose");
 const Billing = require("../models/billing");
-const { http } = require("../client/vehicles");
+const vehiclesApi = require("../client/vehicles");
+const clientApi = require("../client/client");
 
 const factory = ({ router }) => {
   const Model = mongoose.model("Billing", Billing);
@@ -18,14 +19,21 @@ const factory = ({ router }) => {
   });
 
   router.post("/billing", async (req, res) => {
-    const { tempo, veiculo } = req.body;
+    const { tempo, veiculo, cliente } = req.body;
 
-    const { data: { valor } } = await http.get(`/vehicles/${veiculo}`);
+    const {
+      data: { cartao },
+    } = await clientApi.http.get(`/client/${cliente}`);
+
+    const {
+      data: { valor },
+    } = await vehiclesApi.http.get(`/vehicles/${veiculo}`);
 
     const preco = valor * tempo;
 
     const billing = new Model({
       ...req.body,
+      cartao,
       preco,
       status: "pending",
     });

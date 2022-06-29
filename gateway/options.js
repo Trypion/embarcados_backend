@@ -5,4 +5,10 @@ module.exports = {
   billing: {
     url: process.env.BILLING_URL || "http://localhost:3001",
   },
+  vehicles: {
+    url: process.env.VEHICLES_URL || "http://localhost:3002",
+  },
+  vehicle_location: {
+    url: process.env.VEHICLE_LOCATION_URL || "http://localhost:3003",
+  }
 };

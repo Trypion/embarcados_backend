@@ -17,7 +17,7 @@ const factory = ({ router }) => {
   });
 
   router.post("/clients", async (req, res) => {
-    const client = new Model(req.body);
+    const client = new Model(req.body); //entrega o conteudo do body para o model
 
     await client.save();
 
@@ -37,6 +37,6 @@ const factory = ({ router }) => {
   });
 
   return router;
-};
+};  
 
-module.exports = factory;
+module.exports = factory; //exporta o factory inteiro como uma variavel com função

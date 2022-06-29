@@ -4,13 +4,17 @@ const router = express.Router();
 const options = require("./options");
 const bodyParser = require("body-parser");
 
-const routes = require("./routes");
+const routes = require("./routes"); //importa as rotas do arquivo routes.js
 
 const app = express();
 app.use(logger("dev"));
 
 app.use(routes.clients({ router, url: options.clients.url }));
 
+app.use(routes.vehicles({ router, url: options.vehicles.url })); //Gatway para o Vehicles e redirecionamento das rotas (routes.vehicles = route do express pra configurar e url definida em options.js)
+
 app.listen(5000, () => {
   console.log("API Gateway iniciado!");
 });
+
+

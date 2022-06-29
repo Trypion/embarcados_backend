@@ -18,9 +18,13 @@ const BillingSchema = new Schema({
     type: String,
     required: [true, "Cliente Obrigatório"],
   },
-  reserva: {
+  veiculo: {
     type: String,
-    required: [true, "Reserva Obrigatória"],
+    required: [true, "veiculo Obrigatória"],
+  },
+  tempo: {
+    type: String,
+    required: [true, "Tempo Obrigatório"],
   },
 });
 

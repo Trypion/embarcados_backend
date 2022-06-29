@@ -5,4 +5,9 @@ module.exports = {
       dbname: process.env.DATABASE_NAME || "billing",
     },
   },
+  clients: {
+    vehicle: {
+      url: process.env.VEHICLES_URL || "http://localhost:3000",
+    },
+  },
 };

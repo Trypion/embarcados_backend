@@ -1,4 +1,4 @@
-const axios = require("axios");
+const axios = require("axios").default;
 const options = require("../../options");
 
 const BASE_URL = options.clients.vehicle.url;

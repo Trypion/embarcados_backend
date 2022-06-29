@@ -20,9 +20,9 @@ const factory = ({ router }) => {
   router.post("/billing", async (req, res) => {
     const { tempo, veiculo } = req.body;
 
-    const { data: vehicle } = await http.get(`/vehicles/${veiculo}`);
+    const { data: { valor } } = await http.get(`/vehicles/${veiculo}`);
 
-    const preco = vehicle.preco * tempo;
+    const preco = valor * tempo;
 
     const billing = new Model({
       ...req.body,

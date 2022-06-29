@@ -10,6 +10,7 @@ const app = express();
 app.use(logger("dev"));
 
 app.use(routes.clients({ router, url: options.clients.url }));
+app.use(routes.billing({ router, url: options.billing.url }));
 
 app.listen(5000, () => {
   console.log("API Gateway iniciado!");

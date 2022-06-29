@@ -14,6 +14,10 @@ const VehicleSchema = new Schema({
     type: String,
     required: [true, "Modelo Obrigatório"],
   },
+  valor: {
+    type: Number,
+    required: [true, "Valor por hora Obrigatório"],
+  },
 });
 
 module.exports = VehicleSchema;
